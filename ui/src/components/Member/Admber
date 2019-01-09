@@ -1,0 +1,92 @@
+import React from 'react'
+import { withFormik, Form, Field} from 'formik'
+import Yup from 'yup'
+import '../person.css'
+
+const FormwikAddPerson = ({
+    errors,
+    touched
+    
+}) => (
+            <div>
+            <Form>
+            <fieldset>
+            <h3>Member Details:</h3><div>
+                {touched.name && errors.name && <h6>{errors.name}</h6>}
+                <label>Enter Name:
+                <Field name="name" text='text' className="input" /></label>
+                </div>
+                
+                <div>
+                {touched.phoneNumber && errors.phoneNumber && <h6>{errors.phoneNumber}</h6>}
+                <label>PhoneNumber:
+                <Field name="phoneNumber" text='tel' className="input" /></label></div>
+
+                <div>
+                {touched.profession && errors.profession && <h6>{errors.profession}</h6>}
+                <label>Profession:
+                <Field name="profession" text='text' className="input" /></label></div>
+                
+
+                {touched.dob && errors.dob && <h6>{errors.dob}</h6>}
+                <label>Date of Birth:
+                <Field name="dob" text='date' type='date' className="input" /><br/></label>
+
+                <div><label>Email:
+                <Field  name="email" text='email' className="input" /><br/></label>
+                {touched.email && errors.email && <h5>{errors.email}</h5>}</div>
+                <label>Gender:</label>
+                <Field component='select' className='select' name='gender'>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female></option>
+                        
+                </Field>
+                <label>Marital Status:</label>
+                <Field component='select' name='maritalStatus'>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Beloved">Beloved</option>
+                </Field>
+
+                <label>Denomination:</label>
+                <Field component='select' name="denomination">
+                        <option value="FirstLove">FirstLove</option>
+                        <option value="QFC">QFC</option>
+                        <option value="Lighthouse">Lighthouse</option>
+                </Field><br/>
+                <button type="submit" className='button'>Submit</button>
+            </fieldset>
+        </Form>
+           </div> 
+        )
+    
+const AddPerson = withFormik({
+    mapPropsToValues({ name, email, phoneNumber, profession, dob, denomination, maritalStatus, gender}){
+        return {
+        name: name || '',
+        phoneNumber: phoneNumber || '',
+        profession : profession || '',
+        dob: dob || '',
+        email: email || '',
+        gender: gender || 'Male',
+        maritalStatus: maritalStatus || 'Single',
+        denomination: denomination || 'FirstLove'
+        };
+    }, 
+   validationSchema : Yup.object().shape({
+        email: Yup.string().email().required('Email is required'),
+        name: Yup.string().required('Name is required'),
+        profession: Yup.string().required(),
+        phoneNumber: Yup.string().required('Phone number is required'),
+        dob: Yup.string().required('Date of Birth is required')
+
+    }),
+
+    handleSubmit(values){
+        console.log(values)
+    }
+ })(FormwikAddPerson)
+
+//{ touched.name && error.name && <p>{error.name}</p> }
+
+export default AddPerson

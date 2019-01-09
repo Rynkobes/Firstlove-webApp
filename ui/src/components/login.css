@@ -1,0 +1,52 @@
+
+.form{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+    width: 13.5cm;
+    padding-top: 6em;
+    padding-bottom: 4em; 
+    margin-left: auto;
+    margin-right: auto;
+}
+    h4 {
+        color: beige;
+        text-align: center
+    
+  }
+  
+  .loginBody {
+    align-items: center;
+    background-image: url(./ud-login.jpg);
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .fieldset{
+    align-content: center;
+    align-self: center;
+    padding-bottom: 1.4em;
+    padding-top: 1.3em;
+    background-color: rgba(0, 0, 0, 0.488);
+  }
+  
+  .button{
+    width: 27em;
+    height: 2.5em;
+    font-size:14px;
+    background-color: antiquewhite
+  }
+  
+  .input {
+    align-content: center;
+    background-color: beige;
+    font-size: 22px;
+    width: 9.8cm;
+    color: black;
+    margin-bottom: 0.3em;
+  }
+  

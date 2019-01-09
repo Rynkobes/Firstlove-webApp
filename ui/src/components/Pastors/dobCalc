@@ -1,0 +1,40 @@
+import React from 'react'
+import './pastors.css'
+
+class Pastors extends React.Component{
+    state = {
+        dob:''
+    }
+
+    handleOnChange = (e) => {
+        this.setState({dob: e.target.value})
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const age = `Terry is ${new Date().getFullYear() - new Date(this.state.dob).getFullYear() }years old`
+        console.log(age)
+    }
+
+    render(){
+        return (
+            <div className='body'>
+             <form onSubmit={this.handleSubmit}>
+             <div>
+              <label>Enter DOB: <input 
+                type="date"  
+                onChange={this.handleOnChange} 
+                value={this.state.dob}
+                />  </label>
+              <p>{this.age}</p>
+              </div>
+              <button>Submit</button>
+              </form>
+           
+            </div>
+        )
+    }
+    }
+
+         
+export default Pastors

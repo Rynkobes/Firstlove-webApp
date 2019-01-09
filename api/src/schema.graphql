@@ -1,0 +1,112 @@
+type Person{
+  name: String!
+  phoneNumber: String!
+  email: String
+  dateOfBirth: Int!
+  profession: String
+  maritalStatus: String!
+}
+
+type Member { 
+  id: ID
+  person: [Person]! @relation(name: "IS_A", direction: "OUT")
+  chruchworker: [ChurchWorker] @relation(name: "IS_A", direction:"OUT")
+  overseer: Centre @relation(name: "OVERSEE", direction: "OUT")
+  centreMember: Centre @relation(name: "ATTENDS" , direction:"OUT" )
+  bacentaLeader: [Bacenta] @relation(name: "LEADS", direction:"OUT")
+  churchmember: Church @relation(name: "MEMBER_OF", direction:"OUT")
+  churchleader: ChurchLeader @relation(name: "IS_A", direction:"IN")
+  relative: Member @relation(name: "RELATED_TO", direction:"OUT")
+  employee: ChurchWorker @relation(name: "IS_A", direction:"OUT")
+}
+
+type ChurchLeader{
+  id:ID
+  member: [Member] @relation( name:"IS_A", direction:"OUT")
+  appointed: [Pastor] @relation(name: "IS_A" , direction:"OUT" )
+  minister: [Reverend] @relation(name: "IS_A", direction:"OUT" )
+  bishop: [Bishop] @relation(name: "IS_A", direction:"OUT" )
+  leads: [Church] @relation(name: "ASSIGNED_TO", direction:"OUT")
+}
+
+type Pastor{
+  yearAppointed: Int
+  status: String
+}
+
+type Reverend{
+  yearOrdained: Int
+  status: String
+  pastor: [Pastor] @relation(name: "IS_A", direction:"OUT")
+}
+
+type Bishop{
+  yearConsecrated: Int
+  minister: [Reverend] @relation(name: "IS_A", direction:"OUT")
+}
+
+type ChurchWorker{
+  since: Int
+  details: [Person] @relation(name: "IS_A", direction:"OUT")
+  employee: Church @relation(name: "EMPLOYEE_OF", direction:"OUT")
+}
+
+type Bacenta{
+  id: ID
+  name: String!
+  status: String
+  bussing: Structure @relation(name: "BUS_TO", direction: "OUT")
+}
+
+type Centre{
+  name: String!
+  overseer: Member @relation(name:"OVERSEE", direction:"IN")
+  congregarion: [Member] @relation(name:"ATTEND", direction:"IN")
+  bacenta: [Bacenta] @relation(name:"BELONG_TO", direction:"IN")
+}
+
+type Church {
+  name: String!
+  events: [Event] @relation(name: "HAS", direction: "OUT")
+  leaders: [ChurchLeader] @relation(name:"ASSIGNED_TO", direction:"IN")
+}
+
+type Event {
+  name: String!
+  day: Day @relation(name: "SCHEDULED_ON", direction:"OUT")
+  venue: Structure @relation(name:"HAPPEN_AT", direction:"OUT")
+}
+
+type Structure {
+  name: String!
+  capacity: Int
+}
+
+type Day {
+  day: Int
+  income:Float
+  attendance:Int
+  month: Month @relation(name: "IS_IN", direction:"OUT")
+  events: [Event] @relation(name: "SCHEDULED_ON", direction:"IN")
+}
+
+type Month {
+  name: String!
+  day: [Day] @relation(name: "IS_IN", direction:"IN")
+  year: Year @relation(name: "IS_IN", direction:"OUT")
+}
+
+type Year{ 
+  year: Int
+  month: [Month] @relation(name: "IS_IN", direction:"IN")
+}
+
+type Query {
+  members(name: String, dateOfBirth:String, profession:String, maritalStatus:String): [Person]
+  allEmployees (since:Int): [ChurchWorker]
+  bacentaLeaders: [Member]
+  churchByAttendance: [Church]
+  churchByIncome:[Day]
+  leadersByAge:[Person]
+  leadersByMaritalStatus:[Person]
+}

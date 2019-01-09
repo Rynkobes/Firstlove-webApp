@@ -1,0 +1,59 @@
+.sidebar{
+    height: 95%;
+    position: fixed;
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
+    top:5;
+    bottom: 0;
+    width: 300px;
+    padding-top: 20%;
+    background-color: black;
+    background-image: url('./img/sidebar-1.jpg');
+    z-index: 200;
+    text-decoration: none;
+    
+}
+
+.tone_sidebar{
+    background-color: rgba(0, 0, 0, 0.577);
+    height: 100%;
+    position: fixed;
+    width: 300px;
+    bottom:0;
+    top:5;
+    left: 0;
+    z-index: 200;
+
+}
+
+.sidebar ul{
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sidebar li{
+    margin: 1.5rem 0;
+    color: aliceblue;
+        font-size: 1.5rem;
+        text-decoration: none;
+        
+        
+    
+}
+.sidebar a{
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.sidebar a:hover,
+.sidebar a:active{
+    color: #1ceffe;
+}
+
+.link {
+    height: 100%;
+    width: 300px;
+}

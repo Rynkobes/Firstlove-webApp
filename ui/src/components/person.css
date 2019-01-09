@@ -1,0 +1,49 @@
+
+.form{
+    width: 12cm;
+    padding-top: 6em;
+    padding-bottom: 4em; 
+    margin-left: auto;
+    
+}
+    h3 {
+        text-align: center;
+  }
+  
+  .loginBody {
+  
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+    max-height: fit-content;
+    position: fixed;
+  }
+  
+  .fieldset{
+    padding-bottom: 1.4em;
+    padding-top: 1.3em;
+    background-color: rgba(0, 0, 0, 0.488);
+  }
+  
+  .button{
+    width: 15em;
+    height: 2.5em;
+    font-size:14px;
+    background-color: antiquewhite
+  }
+  
+  .input {
+    background-color: white;
+    font-size: 15px;
+    width: 15em;
+    color: black;
+    margin-bottom: 0.5em;
+    align-items: flex-end;
+  }
+
+  select {
+height: 2em;
+width: 8em;
+font-size: 12px
+  }
+  

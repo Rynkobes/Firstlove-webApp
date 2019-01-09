@@ -1,0 +1,34 @@
+p{
+    margin-top: 20%
+}
+
+.body{
+    margin-top:4rem;
+    margin-left: auto;
+    width: 27em;
+    height: 2.5em;
+    font-size:14px;
+}
+
+.buttonHolder{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    width:5rem;
+    height: 2.3rem;
+    margin: 6px;
+}
+
+.addButton{
+    background-color: rgba(50, 191, 216, 0.687)
+}
+
+.editButton{
+    background-color: rgba(5, 115, 232, 0.927)
+}
+
+.deleteButton{
+    background-color: rgba(247, 3, 3, 0.927)
+}
